@@ -135,3 +135,8 @@ axes[2, 2].set_title('Price Trend by Year Built', fontweight='bold')
 axes[2, 2].set_xlabel('Year Built')
 axes[2, 2].set_ylabel('Avg Price ($)')
 axes[2, 2].grid(True, alpha=0.3)
+
+plt.tight_layout()
+plt.savefig('housing_analysis_dashboard.png', dpi=300, bbox_inches='tight')
+plt.show()
+print("Visualization dashboard created and saved")
