@@ -105,3 +105,17 @@ axes[1, 1].set_title('Price vs Crime Rate', fontweight='bold')
 axes[1, 1].set_xlabel('Crime Rate')
 axes[1, 1].set_ylabel('Price ($)')
 axes[1, 1].grid(True, alpha=0.3)
+
+# Plot 6: Price by Size Category
+size_avg = df_clean.groupby('SizeCategory')['Price'].mean()
+axes[1, 2].bar(size_avg.index.astype(str), size_avg.values, color=['skyblue', 'lightgreen', 'salmon', 'gold'])
+axes[1, 2].set_title('Price by Size Category', fontweight='bold')
+axes[1, 2].set_xlabel('Size Category')
+axes[1, 2].set_ylabel('Avg Price ($)')
+axes[1, 2].tick_params(axis='x', rotation=45)
+axes[1, 2].grid(True, alpha=0.3)
+
+# Plot 7: Correlation Heatmap
+sns.heatmap(correlation, ax=axes[2, 0], cmap='coolwarm', annot=True, center=0, 
+            square=True, linewidths=1, cbar_kws={"shrink": 0.8})
+axes[2, 0].set_title('Correlation Heatmap', fontweight='bold')
