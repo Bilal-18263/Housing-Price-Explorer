@@ -39,3 +39,14 @@ print(f"Rows: {df.shape[0]}, Columns: {df.shape[1]}")
 print("\nFirst 5 rows:")
 print(df.head())
 print("\n" + "="*60)
+df_clean = df.copy()
+print("DATA CLEANING")
+print("="*60)
+
+df_clean['HouseAge'] = 2024 - df_clean['YearBuilt']
+df_clean['PricePerSqFt'] = df_clean['Price'] / df_clean['SquareFeet']
+df_clean['SizeCategory'] = pd.cut(df_clean['SquareFeet'], 
+                                 bins=[0, 1500, 3000, 4500, 6000], 
+                                 labels=['Small', 'Medium', 'Large', 'Extra Large'])
+
+print("Basic cleaning and feature engineering completed")
