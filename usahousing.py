@@ -90,3 +90,18 @@ axes[0, 2].set_title('Average Price by Bedrooms', fontweight='bold')
 axes[0, 2].set_xlabel('Bedrooms')
 axes[0, 2].set_ylabel('Avg Price ($)')
 axes[0, 2].grid(True, alpha=0.3) 
+
+# Plot 4: Price by School Rating
+school_avg = df_clean.groupby('SchoolRating')['Price'].mean()
+axes[1, 0].bar(school_avg.index, school_avg.values, color='salmon')
+axes[1, 0].set_title('Price by School Rating', fontweight='bold')
+axes[1, 0].set_xlabel('School Rating')
+axes[1, 0].set_ylabel('Avg Price ($)')
+axes[1, 0].grid(True, alpha=0.3)
+
+# Plot 5: Price vs Crime Rate
+axes[1, 1].scatter(df_clean['CrimeRate'], df_clean['Price'], alpha=0.6, s=20, color='red')
+axes[1, 1].set_title('Price vs Crime Rate', fontweight='bold')
+axes[1, 1].set_xlabel('Crime Rate')
+axes[1, 1].set_ylabel('Price ($)')
+axes[1, 1].grid(True, alpha=0.3)
