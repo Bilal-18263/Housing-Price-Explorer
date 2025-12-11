@@ -12,4 +12,4 @@ warnings.filterwarnings('ignore')
 
 plt.style.use('seaborn-v0_8-darkgrid')
 sns.set_palette("husl")
-print("Project initialized with required imports")
+print("Project initialized with required imports of libraries")
