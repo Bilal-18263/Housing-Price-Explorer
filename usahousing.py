@@ -75,3 +75,18 @@ axes[0, 0].set_title('Price Distribution', fontweight='bold')
 axes[0, 0].set_xlabel('Price ($)')
 axes[0, 0].set_ylabel('Frequency')
 axes[0, 0].grid(True, alpha=0.3)
+
+# Plot 2: Price vs Square Feet
+axes[0, 1].scatter(df_clean['SquareFeet'], df_clean['Price'], alpha=0.6, s=20, color='green')
+axes[0, 1].set_title('Price vs Square Feet', fontweight='bold')
+axes[0, 1].set_xlabel('Square Feet')
+axes[0, 1].set_ylabel('Price ($)')
+axes[0, 1].grid(True, alpha=0.3)
+
+# Plot 3: Average Price by Bedrooms
+bedroom_avg = df_clean.groupby('Bedrooms')['Price'].mean()
+axes[0, 2].bar(bedroom_avg.index, bedroom_avg.values, color=['lightblue', 'lightgreen', 'lightcoral', 'lightsalmon'])
+axes[0, 2].set_title('Average Price by Bedrooms', fontweight='bold')
+axes[0, 2].set_xlabel('Bedrooms')
+axes[0, 2].set_ylabel('Avg Price ($)')
+axes[0, 2].grid(True, alpha=0.3) 
