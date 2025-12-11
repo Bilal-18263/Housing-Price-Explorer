@@ -50,3 +50,5 @@ df_clean['SizeCategory'] = pd.cut(df_clean['SquareFeet'],
                                  labels=['Small', 'Medium', 'Large', 'Extra Large'])
 
 print("Basic cleaning and feature engineering completed")
+print("\nBASIC STATISTICS:")
+print(df_clean[['Price', 'SquareFeet', 'Bedrooms', 'Bathrooms']].describe().round(2))
