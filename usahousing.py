@@ -119,3 +119,19 @@ axes[1, 2].grid(True, alpha=0.3)
 sns.heatmap(correlation, ax=axes[2, 0], cmap='coolwarm', annot=True, center=0, 
             square=True, linewidths=1, cbar_kws={"shrink": 0.8})
 axes[2, 0].set_title('Correlation Heatmap', fontweight='bold')
+
+# Plot 8: Price per SqFt by Bedrooms
+price_per_sqft_stats = df_clean.groupby('Bedrooms')['PricePerSqFt'].mean()
+axes[2, 1].bar(price_per_sqft_stats.index, price_per_sqft_stats.values, color='teal')
+axes[2, 1].set_title('Price per SqFt by Bedrooms', fontweight='bold')
+axes[2, 1].set_xlabel('Bedrooms')
+axes[2, 1].set_ylabel('Price per SqFt ($)')
+axes[2, 1].grid(True, alpha=0.3)
+
+# Plot 9: Price Trend by Year Built
+year_built_avg = df_clean.groupby('YearBuilt')['Price'].mean()
+axes[2, 2].plot(year_built_avg.index, year_built_avg.values, marker='o', linestyle='-', color='purple', alpha=0.7)
+axes[2, 2].set_title('Price Trend by Year Built', fontweight='bold')
+axes[2, 2].set_xlabel('Year Built')
+axes[2, 2].set_ylabel('Avg Price ($)')
+axes[2, 2].grid(True, alpha=0.3)
