@@ -14,7 +14,7 @@ plt.style.use('seaborn-v0_8-darkgrid')
 sns.set_palette("husl")
 print("Project initialized with required imports of libraries")
 try:
-    df = pd.read_csv('usa_housing.csv')
+    df = pd.read_csv('C:/Users/Hp/Desktop/Housing-Price-Explorer/Housing-Price-Explorer/usa_housing.csv')
     print("="*60)
     print("DATASET LOADED SUCCESSFULLY")
     print("="*60)
@@ -38,6 +38,41 @@ except FileNotFoundError:
 print(f"Rows: {df.shape[0]}, Columns: {df.shape[1]}")
 print("\nFirst 5 rows:")
 print(df.head())
+
+print("\n" + "="*60)
+print("CHECKING FOR MISSING VALUES")
+print("="*60)
+
+missing_count = df.isnull().sum()
+if missing_count.sum() > 0:
+    print("Missing values found:")
+    for col in df.columns:
+        if df[col].isnull().sum() > 0:
+            print(f"  {col}: {df[col].isnull().sum()} missing values")
+    
+    # Fill missing values
+    print("\nHandling missing values...")
+    
+    # Fill numerical columns with median
+    numeric_cols = df.select_dtypes(include=['int64', 'float64']).columns
+    for col in numeric_cols:
+        if df[col].isnull().sum() > 0:
+            median_val = df[col].median()
+            df[col].fillna(median_val, inplace=True)
+            print(f"  • Filled {col} with median value: {median_val}")
+    
+    # Fill categorical columns with mode (if any exist)
+    categorical_cols = df.select_dtypes(include=['object']).columns
+    for col in categorical_cols:
+        if df[col].isnull().sum() > 0:
+            mode_val = df[col].mode()[0]
+            df[col].fillna(mode_val, inplace=True)
+            print(f"  • Filled {col} with mode value: {mode_val}")
+    
+    print("✅ All missing values handled!")
+else:
+    print("✅ No missing values found in the dataset.")
+
 print("\n" + "="*60)
 df_clean = df.copy()
 print("DATA CLEANING")
