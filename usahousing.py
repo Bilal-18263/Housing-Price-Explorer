@@ -140,3 +140,31 @@ plt.tight_layout()
 plt.savefig('housing_analysis_dashboard.png', dpi=300, bbox_inches='tight')
 plt.show()
 print("Visualization dashboard created and saved")
+
+print("\n" + "="*60)
+print("PRICE SUGGESTION ENGINE")
+print("="*60)
+
+class HousingPriceEstimator:
+    def __init__(self, data):
+        self.data = data
+        self.avg_price_per_sqft = data['PricePerSqFt'].mean()
+        
+    def estimate_price(self, bedrooms, bathrooms, sqft, school_rating):
+        base_price = sqft * self.avg_price_per_sqft
+        
+        if bedrooms == 1:
+            base_price *= 0.85
+        elif bedrooms >= 4:
+            base_price *= 1.15
+            
+        if bathrooms > 2:
+            base_price *= 1.10
+            
+        school_factor = (school_rating - 5) * 0.04
+        base_price *= (1 + school_factor)
+        
+        lower_bound = base_price * 0.9
+        upper_bound = base_price * 1.1
+        
+        return base_price, (lower_bound, upper_bound)
