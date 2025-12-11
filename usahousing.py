@@ -52,3 +52,13 @@ df_clean['SizeCategory'] = pd.cut(df_clean['SquareFeet'],
 print("Basic cleaning and feature engineering completed")
 print("\nBASIC STATISTICS:")
 print(df_clean[['Price', 'SquareFeet', 'Bedrooms', 'Bathrooms']].describe().round(2))
+
+numeric_cols = ['Price', 'Bedrooms', 'Bathrooms', 'SquareFeet', 'YearBuilt', 'CrimeRate', 'SchoolRating']
+correlation = df_clean[numeric_cols].corr()
+
+print("\nCORRELATION WITH PRICE:")
+price_corr = correlation['Price'].sort_values(ascending=False)
+for col, value in price_corr.items():
+    print(f"  {col}: {value:.3f}")
+
+print("\n" + "="*60)
