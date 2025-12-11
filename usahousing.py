@@ -13,3 +13,29 @@ warnings.filterwarnings('ignore')
 plt.style.use('seaborn-v0_8-darkgrid')
 sns.set_palette("husl")
 print("Project initialized with required imports of libraries")
+try:
+    df = pd.read_csv('usa_housing.csv')
+    print("="*60)
+    print("DATASET LOADED SUCCESSFULLY")
+    print("="*60)
+except FileNotFoundError:
+    print("ERROR: usahousing.csv not found in current directory")
+    print("Creating sample data...")
+    data = {
+        'Price': [221958, 771155, 231932, 465838, 359178],
+        'Bedrooms': [1, 2, 1, 3, 4],
+        'Bathrooms': [1.9, 2.0, 3.0, 3.3, 3.4],
+        'SquareFeet': [4827, 1035, 2769, 2708, 1175],
+        'YearBuilt': [1979, 1987, 1982, 1907, 1994],
+        'GarageSpaces': [2, 2, 1, 3, 2],
+        'LotSize': [1.45, 1.75, 1.46, 1.62, 0.74],
+        'ZipCode': [82240, 74315, 79249, 80587, 20756],
+        'CrimeRate': [48.6, 92.03, 52.08, 61.65, 15.66],
+        'SchoolRating': [5, 9, 3, 1, 4]
+    }
+    df = pd.DataFrame(data)
+
+print(f"Rows: {df.shape[0]}, Columns: {df.shape[1]}")
+print("\nFirst 5 rows:")
+print(df.head())
+print("\n" + "="*60)
