@@ -62,3 +62,16 @@ for col, value in price_corr.items():
     print(f"  {col}: {value:.3f}")
 
 print("\n" + "="*60)
+
+print("DATA VISUALIZATION DASHBOARD")
+print("="*60)
+
+fig, axes = plt.subplots(3, 3, figsize=(18, 15))
+fig.suptitle('HOUSING PRICE ANALYSIS DASHBOARD', fontsize=20, fontweight='bold', y=1.02)
+
+# Plot 1: Price Distribution
+axes[0, 0].hist(df_clean['Price'], bins=25, edgecolor='black', alpha=0.7, color='skyblue')
+axes[0, 0].set_title('Price Distribution', fontweight='bold')
+axes[0, 0].set_xlabel('Price ($)')
+axes[0, 0].set_ylabel('Frequency')
+axes[0, 0].grid(True, alpha=0.3)
