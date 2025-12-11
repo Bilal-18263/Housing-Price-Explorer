@@ -1,0 +1,3 @@
+This project addresses the problem of understanding and predicting housing prices in the U.S. using real-world housing data. The real estate market is complex and influenced by multiple factors such as square footage, location, crime rate, and school quality. This project aims to explore these relationships through data analysis and build a simple price suggestion model to estimate housing prices based on key features.
+
+The topic is important because housing affordability and valuation are critical economic and social issues. By analyzing real data, we can uncover patterns that help buyers, sellers, and policymakers make informed decisions. The project also serves as a practical application of programming and data science skills in an AI context.
