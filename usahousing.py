@@ -168,3 +168,15 @@ class HousingPriceEstimator:
         upper_bound = base_price * 1.1
         
         return base_price, (lower_bound, upper_bound)
+
+        print("KEY INSIGHTS")
+print("="*60)
+
+print(f"1. Average House Price: ${df_clean['Price'].mean():,.0f}")
+print(f"2. Median Price: ${df_clean['Price'].median():,.0f}")
+print(f"3. Price Range: ${df_clean['Price'].min():,.0f} - ${df_clean['Price'].max():,.0f}")
+print(f"4. Avg Price per SqFt: ${df_clean['PricePerSqFt'].mean():.2f}")
+print("\n5. Strongest Price Predictors:")
+print(f"   • Square Feet: {price_corr['SquareFeet']:.3f}")
+print(f"   • School Rating: {price_corr['SchoolRating']:.3f}")
+print(f"   • Bathrooms: {price_corr['Bathrooms']:.3f}")
