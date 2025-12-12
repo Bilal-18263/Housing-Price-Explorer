@@ -203,8 +203,17 @@ class HousingPriceEstimator:
         upper_bound = base_price * 1.1
         
         return base_price, (lower_bound, upper_bound)
+print("\n" + "="*60)
+print("PRICE ESTIMATOR DEMO")
+print("="*60)
 
-        print("KEY INSIGHTS")
+estimator = HousingPriceEstimator(df_clean) 
+
+price, price_range = estimator.estimate_price(3, 2, 1800, 7)
+print(f"Estimated price: ${price:,.0f}")
+print(f"Price range: ${price_range[0]:,.0f} - ${price_range[1]:,.0f}")
+print("="*60)
+print("KEY INSIGHTS")
 print("="*60)
 
 print(f"1. Average House Price: ${df_clean['Price'].mean():,.0f}")
